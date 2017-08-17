@@ -136,57 +136,48 @@ function setAcc(acc) {
 const modal = $('.modal');
 $('#play-button').click(function() {
   $('#landing-title').fadeOut(500, function() {
-    newCountDown();
+    countDown();
   });
 })
 
-function newCountDown() {
-  let counter = 2;
+function countDown() {
+  let counter = 5;
   var countDownLoop = function() {
-    console.log(counter);
     $('#landing-title').text(counter)
 
     if (counter >= 0) {
       $('#landing-title').fadeIn(500, function() {
         $('#landing-title').fadeOut(500);
       });
+      $('#play-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-danger')
+      $('#scores-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary')
+      $('#credits-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-seconday')
+    }
+    if (counter <= 3 && counter > 0) {
+      $('#play-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary')
+      $('#scores-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-warning')
+      $('#credits-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-seconday')
     }
     if (counter === 0) {
+      $('#play-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary')
+      $('#scores-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary')
+      $('#credits-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-success')
+
       $('#landing-title').text('GO!');
-      clearInterval(countDownTimer);
+      setTimeout(function() {
+        $('#landing-title').fadeOut(500);
+        clearInterval(countDownTimer);
+        $('.before-play').css('display', 'none');
+        $('.during-play').css('display', 'block');
+        $('#challenge-input').focus();
+        gameFuncs.startGameTime();
+      }, 1000);
     };
     counter--;
   }
   var countDownTimer = setInterval(countDownLoop, 1000);
   countDownLoop();
   countDownTimer
-}
-
-function countDown() {
-  let counter = 5;
-  var countDownLoop = function() {
-    if (counter >= 0) {
-      $('#countdown').html(counter);
-    }
-    if (counter === 2) {
-      $('.modal-header').css('background-color', 'yellow');
-    }
-    if (counter === 0) {
-      $('.modal-header').css('background-color', '#27e833');
-      $('#countdown').html("GO!");
-      setTimeout(function() {
-        modal.css('display', 'none')
-        clearInterval(counter);
-        $('.main-jumbotron').css('display', 'none');
-        $('.challenge-jumbotron').css('display', 'block');
-        $('#challenge-input').focus();
-        gameFuncs.startGameTime();
-      }, 500);
-    }
-    counter--;
-  }
-  countDownLoop();
-  setInterval(countDownLoop, 1000);
 }
 // --->
 
@@ -204,12 +195,14 @@ $.fn.shake = function() {
 
 // after win animation
 function winAnimate() {
-  $('.animation-container').css({width: `${$(document).width()}`,
-                                overflow: 'visible'});
+
+  $('.animation-container').css({overflow: 'visible',
+                                position: 'fixed',
+                                left: '100%'});
   $('.animation-container img').attr('src', 'img/plane-flame.png');
   $('.paper-plane').animate({
-    left: `-${$(document).width()}`
-  }, 5000)}
+    left: `-${$(document).width() * 2}`
+  }, 4000)}
 
 
 // <--- catch all typed and compare to given text to calculate accuracy
@@ -264,7 +257,7 @@ $('input#challenge-input').on('input', function() {
     gameFuncs.calculateWPM();
     gameFuncs.calculateAccuracy();
     setTimeout(winAnimate(), 500);
-    $('.game-play').css('display', 'none');
+    $('.during-play').css('display', 'none');
     $('.after-win').css('display', 'block');
     // setTimeout(function() { location.reload(); }, 5000); // Wait, then reload page
   }

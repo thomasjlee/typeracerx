@@ -24,10 +24,8 @@
   padding-top: 20vh;
 }
 
-.challenge-jumbotron {
-  /* set display: none for countdown functionality */
+.during-play {
   display: none;
-  /*display: block;*/
 }
 
 /* countdown-modal */
@@ -61,20 +59,6 @@
   width: 10%;
 }
 
-/* win styles */
-/*.win-modal {
-  display: block;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}*/
-
 .after-win {
   display: none;
 }
@@ -84,6 +68,7 @@
   position: absolute;
   height: 70px;
   width: auto;
+  left: 0%;
 }
 
 .crumpled {
