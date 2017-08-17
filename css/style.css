@@ -1,0 +1,124 @@
+.main-title {
+  font-family: 'Bungee Outline', serif;
+  font-weight: bold;
+}
+
+.landing-buttons {
+  font-variant: small-caps;
+}
+
+.correct {
+  color: skyblue;
+}
+
+.incorrect {
+  color: red;
+}
+
+.countdown-text {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.container {
+  padding-top: 20vh;
+}
+
+.challenge-jumbotron {
+  /* set display: none for countdown functionality */
+  display: none;
+  /*display: block;*/
+}
+
+/* countdown-modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-window {
+  border: 1px solid white;
+  border-radius: 30%;
+}
+
+.modal-header {
+  height: 20px;
+  background-color: red;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  border: 3px solid #fff;
+  width: 10%;
+}
+
+/* win styles */
+/*.win-modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}*/
+
+.after-win {
+  display: none;
+}
+
+/* images and animation */
+.paper-plane {
+  position: absolute;
+  height: 70px;
+  width: auto;
+}
+
+.crumpled {
+  position: absolute;
+  margin-top: 10px;
+  height: 50px;
+  width: auto;
+}
+
+.animation-container {
+  position: relative;
+  overflow: hidden;
+  float: left;
+  width: 100%;
+  height: 60px;
+}
+
+.quote-author {
+  font-weight: bold;
+}
+
+/* scoreboard */
+.score-board {
+  display: none;
+  padding-top: 0;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.jumbotron-scores {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* credits */
+.credits {
+  display: none;
+}
