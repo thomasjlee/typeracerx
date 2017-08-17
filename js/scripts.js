@@ -266,7 +266,6 @@ $('input#challenge-input').on('input', function() {
     setTimeout(winAnimate(), 500);
     $('.game-play').css('display', 'none');
     $('.after-win').css('display', 'block');
-    // $('.win-modal').css('display', 'block');
     // setTimeout(function() { location.reload(); }, 5000); // Wait, then reload page
   }
 });
