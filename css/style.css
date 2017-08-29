@@ -27,6 +27,12 @@
   font-size: 1.5em;
 }
 
+@media only screen and (max-width: 500px) {
+  .type-challenge {
+    font-size: 1em;
+  }
+}
+
 .correct {
   color: skyblue;
 }
