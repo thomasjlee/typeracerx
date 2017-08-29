@@ -15,7 +15,7 @@ $.ajax({
 
 // <--- Get high scores from Rails HighScores API
 $.ajax({
-  url: 'http://localhost:3000/high_scores/',
+  url: 'https://typeracerx-api.herokuapp.com/high_scores',
 }).done(function(response) {
   populateScoreBoard(response);
 })
@@ -37,7 +37,7 @@ function populateScoreBoard(response) {
 // <--- Get/Send High Scores to/from Rails HighScores API
 function createScore(wpm, accuracy, name) {
   $.ajax({
-    url: 'http://localhost:3000/high_scores/',
+    url: 'https://typeracerx-api.herokuapp.com/high_scores',
     method: 'POST',
     data: {
       high_score: {
