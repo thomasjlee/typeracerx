@@ -1,7 +1,7 @@
 // <--- Get quotes using mashape api
 $.ajax({
   type: 'GET',
-  url: 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous&count=1',
+  url: 'https://juanroldan1989-moviequotes-v1.p.mashape.com/api/v1/quotes',
   headers: {  "X-Mashape-Key": "SLfUMIHaM2mshTPCSwMUCGUKPHs2p1DHW1qjsnFe4vDZl2k59m",
               Accept: "application/json"  }
 }).done(function(response) {
