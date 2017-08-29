@@ -34,14 +34,28 @@
           </div>
         </div>
 
-        <div class="score-board text-center">
-          <h2>High Scores</h2>
-          <p class="high-scores"></p>
-        </div>
-
-        <div class="credits text-center">
-          <h2>created by Thomas Lee</h2>
-          <p>Inspired by the classic typeracer game. Developed using HTML/CSS, jQuery, AJAX, Ruby on Rails, Bootstrap.</p>
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-2">
+            <div class="score-board text-center">
+              <h2>High Scores</h2>
+              <table class="scores-table">
+                <tr>
+                  <th>Player Name</th>
+                  <th>Score</th>
+                  <th>WPM</th>
+                  <th>Accuracy</th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="col-xs-6 col-xs-offset-3">
+            <div class="credits text-center">
+              <h2>created by Thomas Lee</h2>
+              <p>Inspired by the classic <a href="http://play.typeracer.com/" target="_blank">typeracer</a> game.</p>
+              <p>Made with: HTML/CSS, jQuery, AJAX, Ruby on Rails, Bootstrap.</p>
+              <p>Random quotes api by <a href="https://talaikis.com/random_quotes_api/" target="_blank">Tadas Talaikis</a>.</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -59,12 +73,12 @@
         </div>
 
         <div class="play-panel text-center">
-          <h3>Type this:</h3>
+          <h3 class="play-panel-headings">type this:</h3>
           <div class="type-challenge">
             <span class='correct'></span><span class='incorrect'></span><span class='remain'></span>
           </div>
 
-          <h3>Type here:</h3>
+          <h3 class="play-panel-headings">type here:</h3>
           <div class="col-xs-6 col-xs-offset-3">
             <input id="challenge-input" type="text" class="form-control" aria-label="" autofocus="autofocus">
           </div>
@@ -80,15 +94,18 @@
 
         <h3>Nice work!</h3>
         <p>You just typed a quote by <span class="quote-author"></span>.</p>
-        <p>WPM: <span class="wpm"></span> Accuracy: <span class="acc"></span>%</p>
+        <p><b>WPM: </b><span class="wpm"></span><b> Accuracy: </b><span class="acc"></span>%</p>
         <h3>Save to Scoreboard</h3>
         <form id="score-form">
-          <label for="name">Name</label>
           <input type="hidden" name="wpm" value="" class="wpm">
-          <input type="hidden" name="accuracy" value="99.9" class="acc"><br>
-          <input type="text" name="name" class="" id="name" required>
+          <input type="hidden" name="accuracy" value="" class="acc">
+          <input type="text" name="name" placeholder="Name" required>
           <input type="submit" value="Submit">
         </form>
+      </div>
+
+      <div class="main-title times-up">
+        <h1>Time's Up!</h1>
       </div>
     </div>
   </div>

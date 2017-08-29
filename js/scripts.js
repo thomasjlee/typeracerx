@@ -1,9 +1,7 @@
 // <--- Get quotes using mashape api
 $.ajax({
   type: 'GET',
-  url: 'https://juanroldan1989-moviequotes-v1.p.mashape.com/api/v1/quotes',
-  headers: {  "X-Mashape-Key": "SLfUMIHaM2mshTPCSwMUCGUKPHs2p1DHW1qjsnFe4vDZl2k59m",
-              Accept: "application/json"  }
+  url: 'https://talaikis.com/api/quotes/random/'
 }).done(function(response) {
   let quote = response.quote;
   $('span.remain').text(quote);
@@ -24,8 +22,13 @@ $.ajax({
 
 function populateScoreBoard(response) {
   response.forEach(function(record) {
-    $(".high-scores").append(`
-      <p><span>${record.name}: WPM: ${record.wpm} Accuracy: ${record.accuracy}%</span></p>
+    $(".scores-table").append(`
+      <tr>
+        <td>${record.name}</td>
+        <td>${Math.floor(record.wpm * record.accuracy)}</td>
+        <td>${record.wpm}</td>
+        <td>${record.accuracy}%</td>
+      </tr>
     `);
   })
 }
@@ -44,7 +47,7 @@ function createScore(wpm, accuracy, name) {
       }
     }
   }).done(function(response) {
-    console.log("Score submitted successfully!");
+    location.reload();
   })
 }
 
@@ -92,8 +95,14 @@ function gameFuncs() {
         $('#time-counter').html(counter);
       }
       if (counter === 0) {
-        // trigger time's up event
         clearInterval(counter);
+        $('.during-play').fadeOut(1000, function() {
+          $('.times-up').fadeIn(1000, function() {
+            $('.times-up').fadeOut(1000, function() {
+              location.reload();
+            });
+          });
+        });
       }
     }, 1000);
   }
@@ -136,6 +145,8 @@ function setAcc(acc) {
 const modal = $('.modal');
 $('#play-button').click(function() {
   $('#landing-title').fadeOut(500, function() {
+    $('.score-board').css('display', 'none');
+    $('.credits').css('display', 'none');
     countDown();
   });
 })
@@ -149,9 +160,9 @@ function countDown() {
       $('#landing-title').fadeIn(500, function() {
         $('#landing-title').fadeOut(500);
       });
-      $('#play-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-danger')
-      $('#scores-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary')
-      $('#credits-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-seconday')
+      $('#play-button').attr({class: 'glyphicon glyphicon-chevron-right btn btn-lg btn-danger', disabled: 'true'}).css('cursor', 'wait')
+      $('#scores-button').attr({class: 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary', disabled: 'true'}).css('cursor', 'wait')
+      $('#credits-button').attr({class: 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary', disabled: 'true'}).css('cursor', 'wait')
     }
     if (counter <= 3 && counter > 0) {
       $('#play-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary')

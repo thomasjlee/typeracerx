@@ -3,8 +3,28 @@
   font-weight: bold;
 }
 
+.jumbotron {
+  padding-bottom: 50px;
+}
+
 .landing-buttons {
   font-variant: small-caps;
+}
+
+.during-play {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.play-panel-headings {
+  font-variant: small-caps;
+  font-weight: bold;
+}
+
+.type-challenge {
+  font-size: 1.5em;
 }
 
 .correct {
@@ -25,6 +45,10 @@
 }
 
 .during-play {
+  display: none;
+}
+
+.times-up {
   display: none;
 }
 
@@ -93,14 +117,22 @@
 /* scoreboard */
 .score-board {
   display: none;
-  padding-top: 0;
+  margin-top: 20px;
   height: 300px;
   overflow-y: scroll;
+  border: 1px solid #ddd;
 }
 
-.jumbotron-scores {
-  padding-top: 5px;
-  padding-bottom: 5px;
+.scores-table {
+  width: 100%;
+}
+
+tr {
+  border-top: 1px solid #ddd;
+}
+
+th {
+  text-align: center;
 }
 
 /* credits */
