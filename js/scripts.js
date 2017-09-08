@@ -81,7 +81,6 @@ $('#scores-button').click(function() {
 
 // <--- Game functions
 gameFuncs();
-
 function gameFuncs() {
   let counter, gameClock;
   function startGameTime() {
@@ -103,23 +102,19 @@ function gameFuncs() {
       }
     }, 1000);
   }
-
   function stopGameTime() {
     clearInterval(gameClock);
   }
-
   function calculateWPM() {
     wpm = (givenText.length / 5) / ((60 - counter) / 60)
     wpm = Math.round(wpm * 100) / 100 // up to two decimal places
     setWPM(wpm);
   }
-
   function calculateAccuracy() {
     acc = (givenText.length / allTyped.length) * 100;
     acc = Math.round(acc * 100) / 100 // up to two decimal places
     setAcc(acc);
   }
-
   gameFuncs.startGameTime = startGameTime;
   gameFuncs.stopGameTime = stopGameTime;
   gameFuncs.calculateWPM = calculateWPM;
@@ -154,7 +149,7 @@ $('#play-button').click(() => {
 function countDown() {
   let counter = 5;
   var countDownLoop = function() {
-    $('#landing-title').text(counter)
+    $('#landing-title').text(counter);
     if (counter >= 0) {
       $('#landing-title').fadeIn(500, () => {
         $('#landing-title').fadeOut(500);
@@ -188,45 +183,42 @@ function countDown() {
   var countDownTimer = setInterval(countDownLoop, 1000);
   countDownLoop();
   countDownTimer
-}
-// --->
+} // --->
 
 // <--- Shake function
 $.fn.shake = function() {
-  this.each(function(i) {
+  this.each(i => {
       $(this).css({ "position": "relative" });
       for (var x = 1; x <= 3; x++) {
-        $(this).animate({ left: -1 }, 1).animate({ left: 0 }, 1).animate({ left: 1 }, 1).animate({ left: 0 }, 1);
+        $(this).animate({ left: -1 }, 1).
+          animate({ left: 0 }, 1).
+          animate({ left: 1 }, 1).
+          animate({ left: 0 }, 1);
       }
   });
   return this;
-}
-// --->
+} // --->
 
-// after win animation
+// After-win animation
 function winAnimate() {
-
   $('.animation-container').css({overflow: 'visible',
                                 position: 'fixed',
                                 left: '100%'});
   $('.animation-container img').attr('src', 'img/plane-flame.png');
   $('.paper-plane').animate({
     left: `-${$(document).width() * 2}`
-  }, 4000)}
+}, 4000)} // --->
 
-
-// <--- catch all typed and compare to given text to calculate accuracy
+// <--- Catch all typed and compare to given text to calculate accuracy
 var allTyped = "";
-
-$('input#challenge-input').keypress(function (e) {
+$('input#challenge-input').keypress((e) => {
   if (e.which !== 0 && !e.ctrlKey && !e.metaKey && !e.altKey) {
     allTyped += String.fromCharCode(e.which)
   }
-});
-// --->
+}); // --->
 
 // <--- User input logic
-$('input#challenge-input').on('input', function() {
+$('input#challenge-input').on('input', () => {
   // progress bar
   const stringLength = givenText.length;
   let typedText = $('input').val();
@@ -249,7 +241,7 @@ $('input#challenge-input').on('input', function() {
     $('span.incorrect').replaceWith(`<span class='incorrect'></span>`);
     $('span.remain').replaceWith(`<span class='remain'>${remainStr}</span>`);
   } else if (typedText[0] !== givenText[0]) { // bad start, i.e. 0 characters matched
-    $('img').attr({src: 'img/crumpled.png', class: 'crumpled'});
+    $('img').attr({src: 'img/crumpled.png', class: 'crumpled', style: 'left: 0%'});
     $('.type-challenge').shake();
     $('span.incorrect').replaceWith(`<span class='incorrect'>${givenText.slice(0, typedLength)}</span>`);
     $('span.remain').replaceWith(`<span class='remain'>${remainStr}</span>`);
@@ -269,7 +261,5 @@ $('input#challenge-input').on('input', function() {
     setTimeout(winAnimate(), 500);
     $('.during-play').css('display', 'none');
     $('.after-win').css('display', 'block');
-    // setTimeout(function() { location.reload(); }, 5000); // Wait, then reload page
   }
-});
-// --->
+}); // --->

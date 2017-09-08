@@ -3,6 +3,10 @@
   font-weight: bold;
 }
 
+.container {
+  padding-top: 20vh;
+}
+
 .jumbotron {
   padding-bottom: 50px;
 }
@@ -11,7 +15,40 @@
   font-variant: small-caps;
 }
 
+/* scoreboard */
+.score-board {
+  display: none;
+  margin-top: 20px;
+  height: 300px;
+  overflow-y: scroll;
+  border: 1px solid #ddd;
+}
+
+.scores-table {
+  width: 100%;
+}
+
+tr {
+  border-top: 1px solid #ddd;
+}
+
+th {
+  text-align: center;
+}
+
+/* credits */
+.credits {
+  display: none;
+}
+
+.credits p {
+  font-size: 1.2em;
+  margin: 4px;
+}
+
+/* game play */
 .during-play {
+  display: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -41,27 +78,6 @@
   color: red;
 }
 
-.countdown-text {
-  font-size: 2em;
-  font-weight: bold;
-}
-
-.container {
-  padding-top: 20vh;
-}
-
-.during-play {
-  display: none;
-}
-
-.times-up {
-  display: none;
-}
-
-.after-win {
-  display: none;
-}
-
 /* images and animation */
 .paper-plane {
   position: absolute;
@@ -85,32 +101,15 @@
   height: 60px;
 }
 
+/* end game */
+.times-up {
+  display: none;
+}
+
+.after-win {
+  display: none;
+}
+
 .quote-author {
   font-weight: bold;
-}
-
-/* scoreboard */
-.score-board {
-  display: none;
-  margin-top: 20px;
-  height: 300px;
-  overflow-y: scroll;
-  border: 1px solid #ddd;
-}
-
-.scores-table {
-  width: 100%;
-}
-
-tr {
-  border-top: 1px solid #ddd;
-}
-
-th {
-  text-align: center;
-}
-
-/* credits */
-.credits {
-  display: none;
 }
