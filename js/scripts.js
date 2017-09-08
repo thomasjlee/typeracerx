@@ -143,8 +143,8 @@ function setAcc(acc) {
 } // --->
 
 // <--- Countdown
-$('#play-button').click(function() {
-  $('#landing-title').fadeOut(500, function() {
+$('#play-button').click(() => {
+  $('#landing-title').fadeOut(500, () => {
     $('.score-board').css('display', 'none');
     $('.credits').css('display', 'none');
     countDown();
@@ -155,27 +155,26 @@ function countDown() {
   let counter = 5;
   var countDownLoop = function() {
     $('#landing-title').text(counter)
-
     if (counter >= 0) {
-      $('#landing-title').fadeIn(500, function() {
+      $('#landing-title').fadeIn(500, () => {
         $('#landing-title').fadeOut(500);
       });
-      $('#play-button').attr({class: 'glyphicon glyphicon-chevron-right btn btn-lg btn-danger', disabled: 'true'}).css('cursor', 'wait')
-      $('#scores-button').attr({class: 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary', disabled: 'true'}).css('cursor', 'wait')
-      $('#credits-button').attr({class: 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary', disabled: 'true'}).css('cursor', 'wait')
+      $('#play-button').attr({class: 'glyphicon glyphicon-chevron-right btn btn-lg btn-danger', disabled: 'true'}).css('cursor', 'wait');
+      $('#scores-button').attr({class: 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary', disabled: 'true'}).css('cursor', 'wait');
+      $('#credits-button').attr({class: 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary', disabled: 'true'}).css('cursor', 'wait');
     }
     if (counter <= 3 && counter > 0) {
-      $('#play-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary')
-      $('#scores-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-warning')
-      $('#credits-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-seconday')
+      $('#play-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary');
+      $('#scores-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-warning');
+      $('#credits-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-seconday');
     }
     if (counter === 0) {
-      $('#play-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary')
-      $('#scores-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary')
-      $('#credits-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-success')
+      $('#play-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary');
+      $('#scores-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-secondary');
+      $('#credits-button').attr('class', 'glyphicon glyphicon-chevron-right btn btn-lg btn-success');
 
       $('#landing-title').text('GO!');
-      setTimeout(function() {
+      setTimeout(() => {
         $('#landing-title').fadeOut(500);
         clearInterval(countDownTimer);
         $('.before-play').css('display', 'none');
