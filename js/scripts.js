@@ -1,4 +1,4 @@
-// <--- Get quotes using mashape api
+// <--- Get quotes from Random Quotes API by Tadas Talaikis
 $.ajax({
   type: 'GET',
   url: 'https://talaikis.com/api/quotes/random/'
@@ -8,10 +8,21 @@ $.ajax({
   setGivenText(quote);
 
   let name = response.author;
-  $('span.quote-author').text(name)
+  $('span.quote-author').text(name);
   setAuthor(name);
-})
-// --->
+}) // --->
+
+// <--- Return quote and author name to allow access outside of AJAX call
+var givenText;
+function setGivenText(quote) {
+  givenText = quote;
+  return givenText;
+}
+
+var authorName;
+function setAuthor(author) {
+  authorName = author;
+} // --->
 
 // <--- Get high scores from Rails HighScores API
 $.ajax({
@@ -31,10 +42,9 @@ function populateScoreBoard(response) {
       </tr>
     `);
   })
-}
-// --->
+} // --->
 
-// <--- Get/Send High Scores to/from Rails HighScores API
+// <--- Get/send High Scores to/from Rails HighScores API
 function createScore(wpm, accuracy, name) {
   $.ajax({
     url: 'https://typeracerx-api.herokuapp.com/high_scores',
@@ -58,19 +68,6 @@ $("#score-form").on("submit", function(event) {
   createScore(wpm, accuracy, name);
 }) // --->
 
-// <--- Get values from API
-var givenText;
-function setGivenText(quote) {
-  givenText = quote;
-  return givenText;
-}
-
-var authorName;
-function setAuthor(author) {
-  authorName = author;
-}
-// --->
-
 // <--- Score and credits buttons
 $('#credits-button').click(function() {
   $('.credits').toggle();
@@ -80,11 +77,11 @@ $('#credits-button').click(function() {
 $('#scores-button').click(function() {
   $('.score-board').toggle();
   $('.credits').css('display', 'none');
-})
-// --->
+}) // --->
 
+// <--- Game functions
+gameFuncs();
 
-gameFuncs(); // allow access to game clock functions
 function gameFuncs() {
   let counter, gameClock;
   function startGameTime() {
@@ -106,26 +103,30 @@ function gameFuncs() {
       }
     }, 1000);
   }
+
   function stopGameTime() {
     clearInterval(gameClock);
   }
+
   function calculateWPM() {
     wpm = (givenText.length / 5) / ((60 - counter) / 60)
     wpm = Math.round(wpm * 100) / 100 // up to two decimal places
     setWPM(wpm);
   }
+
   function calculateAccuracy() {
     acc = (givenText.length / allTyped.length) * 100;
     acc = Math.round(acc * 100) / 100 // up to two decimal places
     setAcc(acc);
   }
+
   gameFuncs.startGameTime = startGameTime;
   gameFuncs.stopGameTime = stopGameTime;
   gameFuncs.calculateWPM = calculateWPM;
   gameFuncs.calculateAccuracy = calculateAccuracy;
-}
+} // --->
 
-// <--- set wpm from gameFunc
+// <--- Set wpm from gameFunc
 var gameWPM;
 function setWPM(wpm) {
   gameWPM = wpm;
@@ -133,7 +134,7 @@ function setWPM(wpm) {
   $('input.wpm').attr('value', wpm);
 } // --->
 
-// <--- set acc from gameFunc
+// <--- Set accuracy from gameFunc
 var gameAcc;
 function setAcc(acc) {
   gameAcc = acc;
@@ -142,7 +143,6 @@ function setAcc(acc) {
 } // --->
 
 // <--- Countdown
-const modal = $('.modal');
 $('#play-button').click(function() {
   $('#landing-title').fadeOut(500, function() {
     $('.score-board').css('display', 'none');
