@@ -14,11 +14,12 @@ Created: August 2017
 - Integrated with [Ruby on Rails API backend](https://github.com/thomasjlee/typeracerx-api) for posting and receiving scores.
 - Uses AJAX to request random famous quotes from Tadas Talaikis's [Random Quotes API](https://talaikis.com/random_quotes_api/).
 - Javascript and jQuery handle all the frontend logic and animation.
+- Deployed on [Surge](http://surge.sh/).
 
 ## Why did I build this?
 TypeRacerX was built after a two-week introduction to Javascript, jQuery, AJAX, and using Rails in API mode. At the time it felt like grasping at straws but the mantra for the week was *if it works, it works!* After finally pulling it together, I was happy to have made a game that people could actually use (I swear those scores aren't hard-coded).
 
-That being said, it looks to me now like spaghetti code. **It's a miracle it works at all.**
+That being said, it looks to me now like spaghetti code. **Surely it's a miracle it works at all.**
 
 ## What I would improve
 This project is no longer in development, but I think it serves as a snapshot of what I knew then, and a way to gauge how much I've improved since. If I were to continue building it, I would:
