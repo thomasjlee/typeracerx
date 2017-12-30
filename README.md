@@ -11,7 +11,7 @@ Created: August 2017
 - Type the generated quote. Don't mess up!
 - The animated paper plane will crumble and you'll receive feedback (red text, shaking animation) when you mistype a character.
 - A score is calculated from your words-per-minute and accuracy.
-- Integrated with [Ruby on Rails API backend](https://github.com/thomasjlee/typeracerx-api) for posting and receiving scores.
+- Integrated with [Ruby on Rails API backend](https://github.com/thomasjlee/typeracerx-api) for posting and retrieving scores.
 - Uses AJAX to request random famous quotes from Tadas Talaikis's [Random Quotes API](https://talaikis.com/random_quotes_api/).
 - Javascript and jQuery handle all the frontend logic and animation.
 - Deployed on [Surge](http://surge.sh/).
