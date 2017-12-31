@@ -32,4 +32,4 @@ This project is no longer in development, but I think it serves as a snapshot of
 - Learn and implement a framework like Angular or Backbone.
 
 ## Author
-I am a developer, coffee-lover, career-changer, and former classical pianist. Visit [thomaslee.io](http://www.thomaslee.io) to see what I'm up to.
+I am a programmer, coffee-lover, career-changer, and former classical pianist. Visit [thomaslee.io](http://www.thomaslee.io) to see what I'm up to.
