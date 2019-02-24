@@ -1,16 +1,30 @@
 // <--- Get quotes from Random Quotes API by Tadas Talaikis
-$.ajax({
-  type: 'GET',
-  url: 'https://talaikis.com/api/quotes/random/'
-}).done(function(response) {
-  let quote = response.quote;
+
+// $.ajax({
+//   type: 'GET',
+//   url: 'https://talaikis.com/api/quotes/random/'
+// }).done(function(response) {
+//   let quote = response.quote;
+//   $('span.remain').text(quote);
+//   setGivenText(quote);
+
+//   let name = response.author;
+//   $('span.quote-author').text(name);
+//   setAuthor(name);
+// }) // --->
+
+// The Random Quotes API has been removed.
+// Temporarily substitute with a static quote.
+
+$(document).ready(function() {
+  let quote = "But he understood at last what Dumbledore had been trying to tell him. It was, he thought, the difference between being dragged into the arena to face a battle to the death and walking into the arena with your head held high. Some people, perhaps, would say that there was little to choose between the two ways, but Dumbledore knew - and so do I, thought Harry, with a rush of fierce pride, and so did my parents - that there was all the difference in the world.";
+
   $('span.remain').text(quote);
   setGivenText(quote);
 
-  let name = response.author;
   $('span.quote-author').text(name);
-  setAuthor(name);
-}) // --->
+  setAuthor("J. K. Rowling");
+});
 
 // <--- Return quote and author name to allow access outside of AJAX call
 var givenText;
